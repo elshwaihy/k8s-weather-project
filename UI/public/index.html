@@ -1,88 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Weather app login</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
-        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-        crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Nova+Square&family=Poppins:wght@100;200;300;400;500;600;800&display=swap"
+    rel="stylesheet"
+  />
     <title>Weather App</title>
-</head>
+  </head>
 
-<body>
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="/logout">
-                        <button type="button" class="btn btn-danger">Logout</button>
-                    </a></li>
-            </ul>
-        </nav>
+  <body>
+    <style>
+      .page-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        gap: 3rem;
+        background: rgb(255, 255, 255);
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(245, 250, 248, 1) 16%,
+          rgba(22, 138, 165, 0.7372198879551821) 100%
+        );
+      }
+
+      .page-header h1 {
+        font-family: "Geist Mono", monospace;
+        color: #168aa5;
+      }
+
+      .page-header h1 small {
+        font-size: 1.3rem;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        /* border: 1px solid #000; */
+        height: 5rem;
+      }
+
+      .header * {
+        /* border: 1px solid #000; */
+        margin: 0;
+      }
+      .header p {
+        /* border: 1px solid #000; */
+        font-family: "Geist Mono", monospace;
+        font-size: 0.95rem;
+      }
+
+      .logout:hover {
+        background-color: #168aa5;
+        color: #ecf6f5;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .logout {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background-color: #ecf6f5;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        padding: 0.5rem;
+        color: #168aa5;
+        text-align: center;
+        text-decoration: none;
+        font-family: "Geist Mono", monospace;
+        width: 5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        border: 2px solid #168aa5;
+        transition: all 0.3s;
+      }
+
+
+      input:focus {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #168aa5;
+        border-radius: 2px;
+        height: 1.5rem;
+        background-color: none;
+      }
+
+      .container {
+        /* border: 1px solid #000; */
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        margin-bottom: 13rem;
+      }
+      .container input {
+        width: 80%;
+      }
+
+      input {
+        border: none;
+        border-bottom: 1px solid #168aa5;
+        border-radius: 2px;
+        height: 1.6rem;
+        background-color: transparent;
+      }
+
+      input:focus {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #168aa5;
+        border-radius: 2px;
+        height: 1.6rem;
+        background-color: none;
+      }
+
+      #go {
+        background-color: #168aa5;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        padding: 0.4rem;
+        color: white;
+        text-align: center;
+        width: 15%;
+      }
+
+      #result {
+        position: absolute;
+        top: 61%;
+        left: 30%;
+        color: #214c56;
+        /* border: 1px solid #168aa5; */
+        font-family: "Geist Mono", monospace;
+        font-size: 1.2rem;
+      }
+
+      #weather_icon {
+        width: 30px;
+        height: 30px;
+      }
+      .icon-des {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        position: absolute;
+        top: -27%;
+        padding: 0;
+      }
+
+      tr td {
+        padding-right: 2.5rem;
+        padding-block: 0.2rem;
+      }
+    </style>
+    <div class="header">
+      <a href="/logout" class="logout">
+        Logout
+      </a>
     </div>
-    <div class="page-header text-center">
-        <h1><img src="logo.png" alt="Weather App" width="90px"
-                style="-webkit-transform: scaleX(-1);transform: scaleX(-1)">
-            Weather App
-            <small>Sample application for practicing DevOps</small>
-        </h1>
+    <div class="page-header">
+      <img
+        src="./pngonly.png"
+        alt="Weather App"
+        width="90px"
+        style="-webkit-transform: scaleX(-1); transform: scaleX(-1)"
+      />
+      <div class="header">
+        <h1>Weatherly</h1>
+        <p>Your Daily Forecast</p>
+      </div>
     </div>
     <div class="container">
-        <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"
-                    aria-hidden="true"></span></span>
-            <input type="text" id="city" class="form-control" placeholder="City Name" aria-describedby="sizing-addon1"
-                required autofocus>
-            <span class="input-group-btn">
-                <button type="button" id="go" class="btn btn-warning">Go!</button>
-            </span>
-        </div>
-        <div class="col-md-5">
-            <img src="spinner.gif" alt="" id="spinner" style="display: none;">
-            <table id="result" class="table lead" hidden>
-                <tr>
-                    <td colspan="2">
-                        <img id="weather_icon" src="" alt="">
-                        <span id="weather_text"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>City</td>
-                    <td id="city_name"></td>
-                </tr>
-                <tr>
-                    <td>Country</td>
-                    <td id="country_name"></td>
-                </tr>
-                <tr>
-                    <td>Temperature</td>
-                    <td id="temp"></td>
-                </tr>
-                <tr>
-                    <td>Feels Like</td>
-                    <td id="feels_like"></td>
-                </tr>
-            </table>
-        </div>
+        <span id="sizing-addon1" style="display: none;"
+          ><span aria-hidden="true"></span
+        ></span>
+        <input
+          type="text"
+          id="city"
+          placeholder="City Name"
+          aria-describedby="sizing-addon1"
+          required
+          autofocus
+        />
+          <button type="button" id="go" class="btn btn-warning">Go</button>
+    </div>
+    <div class="col-md-5">
+      <img src="spinner.gif" alt="" id="spinner" style="display: none" />
+      <table id="result" class="table lead" hidden>
+        <tr>
+          <td colspan="2" class="icon-des">
+            <img id="weather_icon" src="" alt="" />
+            <span id="weather_text"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>City</td>
+          <td id="city_name"></td>
+        </tr>
+        <tr>
+          <td>Country</td>
+          <td id="country_name"></td>
+        </tr>
+        <tr>
+          <td>Temperature</td>
+          <td id="temp"></td>
+        </tr>
+        <tr>
+          <td>Feels Like</td>
+          <td id="feels_like"></td>
+        </tr>
+      </table>
     </div>
     <script src="/index.js"></script>
-</body>
-
+  </body>
 </html>
