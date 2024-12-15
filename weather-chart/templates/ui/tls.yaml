@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Release.Name }}-ui-tls
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+type: kubernetes.io/tls
+data:
+  tls.crt: <>
+  tls.key: <>

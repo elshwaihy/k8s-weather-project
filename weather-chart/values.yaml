@@ -1,0 +1,19 @@
+auth:
+  replicas: 1
+  image: afakharany/weatherapp-auth:lab
+  port: 8080
+  db:
+    image: mysql:5.7
+ 
+
+api:
+  replicas: 2
+  image: afakharany/weatherapp-weather:lab
+  port: 5000
+
+
+ui:
+  replicas: 2
+  image: elshwihi/weatherly:latest
+  port: 3000
+  
